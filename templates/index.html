@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/static/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<h1>KCLFC Fixtures</h1>
+<ul>
+{% for f in fixtures %}
+  <li><a href="/fixture/{{ f[0] }}">{{ f[1] }} — {{ f[2] }} — {{ f[3] }}</a></li>
+{% endfor %}
+</ul>

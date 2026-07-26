@@ -12,7 +12,8 @@
   <p class="page-meta">{{ f[2] }}{% if f[3] %} · {{ f[3] }}{% endif %}</p>
 
   <h2>Your availability</h2>
-<form method="POST" action="/fixture/{{ f[0] }}/respond" onsubmit="this.querySelector('button').disabled = true">    <label>Name <input name="player_name" required></label>
+<form method="POST" action="/fixture/{{ f[0] }}/respond" onsubmit="this.querySelector('button').disabled = true">
+    <label>Name <input name="player_name" required></label>
     <label>Status
       <select name="status">
         <option value="yes">Available</option>

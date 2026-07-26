@@ -1,24 +1,34 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/static/style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ f[1] }} — KCLFC</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <a class="back" href="/">← All fixtures</a>
+  <h1 class="page-title">{{ f[1] }}</h1>
+  <p class="page-meta">{{ f[2] }}{% if f[3] %} · {{ f[3] }}{% endif %}</p>
 
-<h1>{{ f[1] }} — {{ f[2] }}</h1>
-<p>{{ f[3] }}</p>
+  <h2>Your availability</h2>
+  <form method="POST" action="/fixture/{{ f[0] }}/respond">
+    <label>Name <input name="player_name" required></label>
+    <label>Status
+      <select name="status">
+        <option value="yes">Available</option>
+        <option value="no">Not available</option>
+      </select>
+    </label>
+    <button type="submit">Save</button>
+  </form>
 
-<h2>Responses</h2>
-<ul>
-{% for r in responses %}
-  <li>{{ r[0] }}: {{ r[1] }}</li>
-{% endfor %}
-</ul>
-
-<h2>Your availability</h2>
-<form method="POST" action="/fixture/{{ f[0] }}/respond">
-  <label>Name: <input name="player_name" required></label>
-  <select name="status">
-    <option value="yes">Available</option>
-    <option value="no">Not available</option>
-  </select>
-  <button type="submit">Save</button>
-</form>
-
-<a href="/">Back</a>
+  <h2>Responses</h2>
+  <ul>
+    {% for r in responses %}
+    <li>{{ r[0] }} <span class="badge {{ r[1] }}">{{ "Available" if r[1] == "yes" else "Not available" }}</span></li>
+    {% endfor %}
+    {% if not responses %}<li class="empty">No responses yet — be first</li>{% endif %}
+  </ul>
+</body>
+</html>

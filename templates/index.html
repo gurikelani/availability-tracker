@@ -1,9 +1,23 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/static/style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KCLFC Fixtures</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>KCLFC <span>Fixtures</span></h1>
+    <a class="btn-small" href="/fixture/new">+ Add fixture</a>
+  </header>
 
-<h1>KCLFC Fixtures</h1>
-<ul>
-{% for f in fixtures %}
-  <li><a href="/fixture/{{ f[0] }}">{{ f[1] }} — {{ f[2] }} — {{ f[3] }}</a></li>
-{% endfor %}
-</ul>
+  {% for f in fixtures %}
+  <a class="card" href="/fixture/{{ f[0] }}">
+    <div class="card-title">{{ f[1] }}</div>
+    <div class="card-meta">{{ f[2] }}{% if f[3] %} · {{ f[3] }}{% endif %}</div>
+    <div class="card-cta">Respond →</div>
+  </a>
+  {% endfor %}
+</body>
+</html>

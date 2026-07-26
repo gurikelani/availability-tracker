@@ -12,8 +12,7 @@
 <a class="back" href="/">← All fixtures</a>
 <h1 class="page-title">New fixture</h1>
 
-<form method="POST">
-  <label>Opponent: <input name="opponent" required></label><br>
+<form method="POST" onsubmit="this.querySelector('button').disabled = true">  <label>Opponent: <input name="opponent" required></label><br>
   <label>Date: <input name="date" type="date" required></label><br>
   <label>Location: <input name="location"></label><br>
   <button type="submit">Create</button>
